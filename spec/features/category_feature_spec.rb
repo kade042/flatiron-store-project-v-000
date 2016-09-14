@@ -19,7 +19,7 @@ describe 'Feature Test: Category', :type => :feature do
 
     context "not logged in" do
 
-      it 'does not display "Add To Cart" button' do
+      it 'does not display "Add to Cart" button' do
         expect(page).to_not have_content "Add To Cart"
       end
 

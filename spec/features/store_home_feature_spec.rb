@@ -19,6 +19,7 @@ describe 'Feature Test: Store', :type => :feature do
             expect(page).to_not have_content item.title
           else
             expect(page).to have_content item.title
+
             expect(page).to have_content "$#{item.price.to_f/100}"
           end
         end
@@ -28,7 +29,7 @@ describe 'Feature Test: Store', :type => :feature do
 
         it 'does not display "Add To Cart" button' do
           visit store_path
-          expect(page).to_not have_content "Add To Cart"
+          expect(page).to_not have_content "Add to Cart"
         end
 
       end
@@ -41,6 +42,7 @@ describe 'Feature Test: Store', :type => :feature do
 
         it 'does display "Add To Cart" button' do
           visit store_path
+          #binding.pry
           expect(page).to have_selector("input[type=submit][value='Add to Cart']")
         end
       end

@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
-
+gem 'jquery-turbolinks'
+gem 'turbolinks'
 gem 'rails', '4.2'
 gem 'sass-rails', '4.0.2'
 gem 'uglifier', '>= 1.3.0'
@@ -26,6 +27,6 @@ group :test, :development do
   gem "thin"
 end
 
-gem "bootstrap-sass", "~> 3.1.1"
+gem "bootstrap-sass"
 gem "faker"
 gem "friendly_id"

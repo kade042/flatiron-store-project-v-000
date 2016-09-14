@@ -1,8 +1,33 @@
-<nav class="">
-    <ul>
-        <li> <%= link_to "Store Home", store_path %> </li>
-        <% if !!@cart %>
+<nav class="navbar navbar-inverse">
+  <div class="container">
+    <div class="navbar-header">
+      <%= link_to "Store Home", store_path, class: 'navbar-brand' %>
+    </div>
+    <div id="navbar">
+      <ul class="nav navbar-nav pull-right">
+        <% if user_signed_in? %>
+
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+              Signed in as <%= current_user.email%>
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            <li><%= link_to 'Profile' %></li>
+            <li><%= link_to 'Note' %></li>
+            <li><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></li>
+          </ul>
+        </li>
+        <% if current_cart %>
           <li> <%= link_to "Cart", cart_path(current_cart) %></li>
-        <% end %>
-    </ul>
+        <%end%>
+      <% else %>
+        <li><%= link_to 'sign in', new_user_session_path %></li>
+        <li><%= link_to 'Sign up', new_user_registration_path %></li>
+      <% end %>
+      </ul>
+
+    </div>
+  </div>
 </nav>

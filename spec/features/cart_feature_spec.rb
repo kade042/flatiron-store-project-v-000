@@ -48,11 +48,12 @@ describe 'Feature Test: Cart', :type => :feature do
      end
 
      it "sets current_cart to nil on checkout" do
+
        visit cart_path(@user.current_cart)
        click_button("Checkout")
 
        @user.reload
-       expect(@user.current_cart).to be_nil 
+       expect(@user.current_cart).to be_nil
      end
     end
   end
@@ -79,6 +80,7 @@ describe 'Feature Test: Cart', :type => :feature do
         first_item.line_items.create(quantity: 1, cart: @user.current_cart)
         @user.save
         visit store_path
+        #binding.pry
         expect(page).to have_link("Cart", href: cart_path(@user.current_cart))
       end
 
@@ -140,7 +142,7 @@ describe 'Feature Test: Cart', :type => :feature do
 
       it "Updates quantity when selecting the same item twice" do
         first_item = Item.first
-        2.times do 
+        2.times do
           visit store_path
           within("form[action='#{line_items_path(item_id: first_item)}']") do
             click_button("Add to Cart")
